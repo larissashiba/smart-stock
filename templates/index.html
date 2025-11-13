@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SmartStock - Controle de Estoque</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        'inter': ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        'primary': '#4E556E', 
+                        'success': '#10B981', 
+                        'warning': '#F59E0B', 
+                        'danger': '#EF4444', 
+                    },
+                }
+            }
+        }
+    </script>
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+        .progress-bar-container {
+            height: 20px;
+            background-color: #e5e7eb;
+            border-radius: 9999px;
+            overflow: hidden;
+            box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
+        }
+        .progress-bar {
+            height: 100%;
+            transition: width 0.3s ease, background-color 0.3s ease;
+            border-radius: 9999px;
+            min-width: 5px; 
+        }
+        .grid-stats .text-xs {
+            white-space: normal;
+        }
+        .fade-in {
+            animation: fadeIn 0.5s ease-in-out;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        /* Garantindo que o elemento "hidden" não ocupe espaço */
+        .hidden { display: none !important; }
+    </style>
+</head>
+<body class="bg-gray-50 min-h-screen p-4 md:p-8 font-inter">
+    <div class="max-w-4xl mx-auto">
+        <header class="text-center mb-8">
+            <!-- Espaçamento ajustado: mb-4 -->
+            <h1 class="text-3xl md:text-4xl font-bold text-primary mb-4">SmartStock 💡</h1> 
+            <p class="text-gray-500">Monitoramento de Estoque em Tempo Real</p>
+        </header>
+
+        <!-- Container para os MÚLTIPLOS ITENS -->
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-8">
+
+            <!-- Card do Item: FARINHA -->
+            <div id="card-Farinha" class="item-card bg-white p-6 rounded-xl shadow-2xl transition-all duration-300 hover:shadow-primary/20 hover:scale-[1.01]">
+                <div class="flex items-center justify-between mb-4 border-b pb-3">
+                    <h2 class="text-2xl font-semibold text-primary">Estoque de Farinha</h2>
+                    <span id="status-badge-Farinha" class="status-badge bg-gray-400 text-white px-2 py-0.5 text-xs font-semibold rounded-full">Carregando...</span>
+                </div>
+                
+                <div class="grid grid-cols-2 gap-3 text-center grid-stats">
+                    <!-- Peso -->
+                    <div class="p-3 bg-gray-100 rounded-lg shadow-inner">
+                        <p class="text-xs text-gray-600">Peso</p>
+                        <span id="current-weight-Farinha" class="text-xl font-extrabold text-primary">0.00 kg</span>
+                    </div>
+                    <!-- Estoque -->
+                    <div class="p-3 bg-gray-100 rounded-lg shadow-inner">
+                        <p class="text-xs text-gray-600">Estoque</p>
+                        <span id="percentage-Farinha" class="text-xl font-extrabold text-primary">0%</span>
+                    </div>
+                </div>
+
+                <div class="mt-6">
+                    <p class="text-lg font-medium text-gray-700 mb-2">Nível de Estoque</p>
+                    <div class="progress-bar-container">
+                        <div id="progress-Farinha" class="progress-bar bg-primary" style="width: 0%;"></div>
+                    </div>
+                    <p class="text-xs text-gray-500 mt-2 text-center">
+                        Limite de Alerta: 15.00 kg (30%) | Capacidade Máxima: <span id="max-Farinha">50.00 kg</span>
+                    </p>
+                </div>
+            </div>
+
+            <!-- Card do Item: ACUCAR -->
+            <div id="card-Acucar" class="item-card bg-white p-6 rounded-xl shadow-2xl transition-all duration-300 hover:shadow-primary/20 hover:scale-[1.01]">
+                <div class="flex items-center justify-between mb-4 border-b pb-3">
+                    <h2 class="text-2xl font-semibold text-primary">Estoque de Açúcar</h2>
+                    <span id="status-badge-Acucar" class="status-badge bg-gray-400 text-white px-2 py-0.5 text-xs font-semibold rounded-full">Carregando...</span>
+                </div>
+                
+                <!-- RÓTULOS (AGORA SÓ 2 COLUNAS) -->
+                <div class="grid grid-cols-2 gap-3 text-center grid-stats">
+                    <!-- Peso -->
+                    <div class="p-3 bg-gray-100 rounded-lg shadow-inner">
+                        <p class="text-xs text-gray-600">Peso</p>
+                        <span id="current-weight-Acucar" class="text-xl font-extrabold text-primary">0.00 kg</span>
+                    </div>
+                    <!-- Estoque -->
+                    <div class="p-3 bg-gray-100 rounded-lg shadow-inner">
+                        <p class="text-xs text-gray-600">Estoque</p>
+                        <span id="percentage-Acucar" class="text-xl font-extrabold text-primary">0%</span>
+                    </div>
+                </div>
+
+                <div class="mt-6">
+                    <p class="text-lg font-medium text-gray-700 mb-2">Nível de Estoque</p>
+                    <div class="progress-bar-container">
+                        <div id="progress-Acucar" class="progress-bar bg-primary" style="width: 0%;"></div>
+                    </div>
+                    <p class="text-xs text-gray-500 mt-2 text-center">
+                        Limite de Alerta: 10.00 kg (20%) | Capacidade Máxima: <span id="max-Acucar">50.00 kg</span>
+                    </p>
+                </div>
+            </div>
+
+            <!-- Card do Item: OLEO -->
+            <div id="card-Oleo" class="item-card bg-white p-6 rounded-xl shadow-2xl transition-all duration-300 hover:shadow-primary/20 hover:scale-[1.01]">
+                <div class="flex items-center justify-between mb-4 border-b pb-3">
+                    <h2 class="text-2xl font-semibold text-primary">Estoque de Óleo</h2>
+                    <span id="status-badge-Oleo" class="status-badge bg-gray-400 text-white px-2 py-0.5 text-xs font-semibold rounded-full">Carregando...</span>
+                </div>
+                
+                <!-- RÓTULOS (AGORA SÓ 2 COLUNAS) -->
+                <div class="grid grid-cols-2 gap-3 text-center grid-stats">
+                    <!-- Peso -->
+                    <div class="p-3 bg-gray-100 rounded-lg shadow-inner">
+                        <p class="text-xs text-gray-600">Peso</p>
+                        <span id="current-weight-Oleo" class="text-xl font-extrabold text-primary">0.00 kg</span>
+                    </div>
+                    <!-- Estoque -->
+                    <div class="p-3 bg-gray-100 rounded-lg shadow-inner">
+                        <p class="text-xs text-gray-600">Estoque</p>
+                        <span id="percentage-Oleo" class="text-xl font-extrabold text-primary">0%</span>
+                    </div>
+                </div>
+
+                <div class="mt-6">
+                    <p class="text-lg font-medium text-gray-700 mb-2">Nível de Estoque</p>
+                    <div class="progress-bar-container">
+                        <div id="progress-Oleo" class="progress-bar bg-primary" style="width: 0%;"></div>
+                    </div>
+                    <p class="text-xs text-gray-500 mt-2 text-center">
+                        Limite de Alerta: 10.00 kg (20%) | Capacidade Máxima: <span id="max-Oleo">50.00 kg</span>
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div class="bg-yellow-100 border-l-4 border-warning p-4 rounded-lg shadow-md mt-6">
+            <h3 class="text-xl font-bold text-warning mb-3 flex items-center">
+                <svg class="w-6 h-6 mr-2" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M10 2a8 8 0 100 16 8 8 0 000-16zM5.929 7.071a1 1 0 00-1.414 1.414L8.586 12l-4.071 4.071a1 1 0 101.414 1.414L10 13.414l4.071 4.071a1 1 0 001.414-1.414L11.414 12l4.071-4.071a1 1 0 00-1.414-1.414L10 10.586 5.929 7.071z" clip-rule="evenodd"></path></svg>
+                Lista de Produtos para compra
+            </h3>
+            <ul id="shopping-list" class="space-y-2 text-gray-800">
+                <!-- A mensagem de lista vazia é um elemento persistente, controlado via classe 'hidden' -->
+                <li id="empty-list-message" class="text-sm italic">Nenhum item em alerta. Estoque OK!</li>
+            </ul>
+        </div>
+
+    </div>
+
+    <script>
+        const statusUrl = '/status';
+        const itemIds = ['Farinha', 'Acucar', 'Oleo'];
+        const shoppingList = document.getElementById('shopping-list');
+        let emptyListMessage = document.getElementById('empty-list-message'); 
+        
+        // Armazena quais itens estão na lista de compras para evitar duplicatas
+        let itemsInAlert = new Set();
+
+        // Função para adicionar um item à lista de compras
+        function addItemToShoppingList(itemId, itemName) {
+            if (itemsInAlert.has(itemId)) {
+                return; // Já está na lista
+            }
+
+            // Apenas adiciona o item e o ID ao Set
+            const listItem = document.createElement('li');
+            listItem.id = `list-item-${itemId}`;
+            listItem.className = 'text-base font-semibold text-gray-800 fade-in flex items-center';
+            listItem.innerHTML = `
+                <span class="mr-2 text-warning">●</span>
+                <span>${itemName} (Comprar!)</span>
+            `;
+            shoppingList.appendChild(listItem);
+            itemsInAlert.add(itemId);
+        }
+
+        // Função para remover um item da lista de compras
+        function removeItemFromShoppingList(itemId) {
+            if (!itemsInAlert.has(itemId)) {
+                return; 
+            }
+
+            const listItem = document.getElementById(`list-item-${itemId}`);
+            if (listItem) {
+                // Adiciona um efeito de fade-out antes de remover
+                listItem.classList.remove('fade-in');
+                listItem.style.opacity = '0'; 
+                listItem.style.transition = 'opacity 0.3s ease-out';
+                
+                setTimeout(() => {
+                    listItem.remove();
+                    itemsInAlert.delete(itemId);
+                    // O controle do emptyListMessage é feito centralizadamente
+                }, 300); 
+            } else {
+                itemsInAlert.delete(itemId);
+            }
+        }
+
+        // Função principal para buscar e atualizar todos os itens
+        async function fetchAndUpdateStatus() {
+            try {
+                const response = await fetch(statusUrl);
+                const data = await response.json();
+                
+                itemIds.forEach(itemId => {
+                    const itemData = data[itemId];
+                    if (!itemData) return;
+
+                    const currentWeight = itemData.peso;
+                    const maxCapacity = itemData.capacidade_maxima;
+                    const alertLimit = itemData.limite_alerta;
+                    const timestamp = itemData.timestamp;
+
+                    let percentage = (currentWeight / maxCapacity) * 100;
+                    percentage = Math.max(0, Math.min(100, percentage));
+
+                    // 2. Determinar o status e a cor
+                    let statusText = 'INICIAL';
+                    let statusClass = 'bg-gray-400 text-white';
+                    let progressClass = 'bg-primary'; 
+                    
+                    let itemName = itemId.charAt(0).toUpperCase() + itemId.slice(1); 
+                    if (itemId === 'Acucar') itemName = 'Açúcar';
+
+                    const date = new Date(timestamp);
+                    const isInitialState = currentWeight === 0.00 && date.getFullYear() < 2024; 
+
+                    if (!isInitialState) {
+                        if (currentWeight < 0.1) {
+                            // DESCONECTADO/FALHA
+                            statusText = 'DESCONECTADO';
+                            statusClass = 'bg-danger text-white';
+                            progressClass = 'bg-danger'; 
+                            removeItemFromShoppingList(itemId); 
+                        } else {
+                            statusText = 'CONECTADO';
+                            statusClass = 'bg-success text-white'; 
+
+                            if (currentWeight < alertLimit) {
+                                // ALERTA: Peso abaixo do limite!
+                                statusText = 'ALERTA!';
+                                statusClass = 'bg-warning text-gray-800'; 
+                                progressClass = 'bg-warning';
+                                addItemToShoppingList(itemId, itemName); // <<< Adiciona se em ALERTA
+                            } else {
+                                // Estoque OK
+                                removeItemFromShoppingList(itemId); // <<< Remove se OK
+
+                                if (currentWeight > maxCapacity * 0.9) {
+                                    progressClass = 'bg-success';
+                                } else {
+                                    progressClass = 'bg-primary';
+                                }
+                            }
+                        }
+                    } else {
+                        // Estado inicial
+                        removeItemFromShoppingList(itemId);
+                    }
+
+                    // Atualiza a interface
+                    document.getElementById(`current-weight-${itemId}`).textContent = isInitialState ? '0.00 kg' : `${currentWeight.toFixed(2)} kg`;
+                    document.getElementById(`percentage-${itemId}`).textContent = isInitialState ? '0%' : `${percentage.toFixed(0)}%`;
+                    
+                    const statusBadge = document.getElementById(`status-badge-${itemId}`);
+                    statusBadge.textContent = statusText;
+                    statusBadge.className = `status-badge px-2 py-0.5 text-xs font-semibold rounded-full ${statusClass}`;
+
+                    const progressBar = document.getElementById(`progress-${itemId}`);
+                    progressBar.style.width = `${percentage}%`;
+                    progressBar.className = `progress-bar ${progressClass}`;
+                });
+                
+
+                if (itemsInAlert.size > 0) {
+                    emptyListMessage.classList.add('hidden');
+                } else {
+                    emptyListMessage.classList.remove('hidden');
+                }
+
+
+            } catch (error) {
+                console.error("Erro ao buscar status:", error);
+                itemIds.forEach(itemId => {
+                    document.getElementById(`status-badge-${itemId}`).textContent = 'ERRO CONEXÃO';
+                    document.getElementById(`status-badge-${itemId}`).className = 'status-badge px-2 py-0.5 text-xs font-semibold rounded-full bg-danger text-white';
+                });
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            fetchAndUpdateStatus();
+            setInterval(fetchAndUpdateStatus, 1000);
+        });
+
+    </script>
+</body>
+</html>
