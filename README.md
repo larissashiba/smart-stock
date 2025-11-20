@@ -154,8 +154,8 @@ cd backend
 node index.js
 ```
 ## 📸 Imagens do Projeto 
-
-![](frontend/src/assets/dashboard.png)
+### Dashboard Completa, com Estoque e Estatísticas em gráficos
+![](frontend/src/assets/dashboard1.png)
 ![Página de Controle de Estoque](frontend/src/assets/estoquepage.png)
 ![Página de Estatísticas e Projeção](frontend/src/assets/estatisticaspage.png)
 ![Mostrando a conexão bem sucedida](frontend/src/assets/conexao.png)
