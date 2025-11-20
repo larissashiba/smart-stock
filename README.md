@@ -155,7 +155,7 @@ node index.js
 ```
 ## 📸 Imagens do Projeto 
 
-![Dashboard Smart Stock](frontend/src/assets/dashboard.png)
+![](frontend/src/assets/dashboard.png)
 ![Página de Controle de Estoque](frontend/src/assets/estoquepage.png)
 ![Página de Estatísticas e Projeção](frontend/src/assets/estatisticaspage.png)
 ![Mostrando a conexão bem sucedida](frontend/src/assets/conexao.png)
