@@ -158,6 +158,9 @@ node index.js
 ![](frontend/src/assets/dashboard1.png)
 ![Página de Controle de Estoque](frontend/src/assets/estoquepage.png)
 ![Página de Estatísticas e Projeção](frontend/src/assets/estatisticaspage.png)
+
+### Exemplificando como a conexão bem sucedida se parece no Wokwi e a Montagem
+
 ![Mostrando a conexão bem sucedida](frontend/src/assets/conexao.png)
 ![ESP32 - WOKWI](frontend/src/assets/esp32.png)
 
