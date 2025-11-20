@@ -1,0 +1,7 @@
+{
+    "estoque": [
+        { "item": "Farinha", "peso_atual": 35, "peso_maximo": 50, "status": "OK" },
+        { "item": "Acucar", "peso_atual": 5, "peso_maximo": 50, "status": "ESTOQUE CRÍTICO" },
+        { "item": "Oleo", "peso_atual": 0, "peso_maximo": 50, "status": "PRODUTOS QUE DEVEM SER RECOMPRADOS" }
+    ]
+}
