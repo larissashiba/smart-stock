@@ -155,10 +155,10 @@ node index.js
 ```
 ## 📸 Imagens do Projeto 
 
-![Dashboard Smart Stock](assets/dashboard1.png)
-![Pagina de Control de Estoque](assets/estoquepage.png)
-![Página de Estatísticas e Projeção](assets/estatisticaspage.png)
-![Mostrando a conexão bem sucedida](assets/conexao.png)
-![ESP32 - WOKWI](assets/esp32.png)
+![Dashboard Smart Stock](frontend/src/assets/dashboard.png)
+![Página de Controle de Estoque](frontend/src/assets/estoquepage.png)
+![Página de Estatísticas e Projeção](frontend/src/assets/estatisticaspage.png)
+![Mostrando a conexão bem sucedida](frontend/src/assets/conexao.png)
+![ESP32 - WOKWI](frontend/src/assets/esp32.png)
 
 ## 🎥 Vídeo Explicativo
