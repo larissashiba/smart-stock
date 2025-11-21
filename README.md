@@ -36,6 +36,12 @@ O dashboard web permite visualizar tudo em tempo real, com cores e alertas para 
 
 ---
 
+## 🎥 Vídeo Explicativo
+
+[vídeo de apresentação do projeto no YouTube](https://youtu.be/TTpRL5lkcvA)
+
+----
+
 ## ⚙️ Funcionalidades
 
 - 📡 Conexão automática com Wi-Fi e broker MQTT  
@@ -165,12 +171,6 @@ node index.js
 ![ESP32 - WOKWI](frontend/src/assets/esp32.png)
 
 ---
-
-## 🎥 Vídeo Explicativo
-
-[vídeo de apresentação do projeto no YouTube](https://youtu.be/TTpRL5lkcvA)
-
-----
 
 ## ✨ Realizado por
 
