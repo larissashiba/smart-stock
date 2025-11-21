@@ -164,4 +164,15 @@ node index.js
 ![Mostrando a conexão bem sucedida](frontend/src/assets/conexao.png)
 ![ESP32 - WOKWI](frontend/src/assets/esp32.png)
 
+---
+
 ## 🎥 Vídeo Explicativo
+
+[vídeo de apresentação do projeto no YouTube](https://youtu.be/TTpRL5lkcvA)
+
+----
+
+## ✨ Realizado por
+
+| [<img loading="lazy" src="https://github.com/larissashiba.png" width=115><br><sub>Larissa Shiba</sub>](https://github.com/larissashiba) | 
+| :---: |
